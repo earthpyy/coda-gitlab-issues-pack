@@ -30,6 +30,22 @@ pack.addFormula({
       type: coda.ParameterType.String,
       name: 'projectId',
       description: 'The ID of a GitLab project.',
+      autocomplete: async (context, search) => {
+        const url = coda.withQueryParams(`${API_ENDPOINT}/projects`, {
+          search,
+          order_by: 'similarity',
+          simple: true,
+          with_issues_enabled: true,
+        })
+        const response = await context.fetcher.fetch({
+          method: 'GET',
+          url,
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+        return coda.autocompleteSearchObjects(search, response.body, 'name_with_namespace', 'id')
+      },
     }),
     coda.makeParameter({
       type: coda.ParameterType.String,
