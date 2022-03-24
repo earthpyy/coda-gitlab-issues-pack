@@ -1,7 +1,5 @@
 import * as coda from '@codahq/packs-sdk'
-
-const HOST = 'gitlab.com'
-const API_ENDPOINT = `https://${HOST}/api/v4`
+import { API_ENDPOINT, HOST } from './constants'
 
 export const pack = coda.newPack()
 
@@ -24,7 +22,6 @@ pack.setUserAuthentication({
 })
 
 // formulas
-// create issue
 pack.addFormula({
   name: 'CreateIssue',
   description: 'Create a new issue.',
