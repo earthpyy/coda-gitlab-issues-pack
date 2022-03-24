@@ -21,7 +21,7 @@ pack.setUserAuthentication({
   },
 })
 
-// formulas
+// formula: create issue
 pack.addFormula({
   name: 'CreateIssue',
   description: 'Create a new issue.',
