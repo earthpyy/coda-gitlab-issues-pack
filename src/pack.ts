@@ -70,10 +70,17 @@ pack.addFormula({
       description: 'The labels to be tagged on an issue.',
       optional: true,
     }),
+    coda.makeParameter({
+      type: coda.ParameterType.String,
+      name: 'returnField',
+      description: 'The name of field to return.',
+      optional: true,
+      suggestedValue: 'id',
+    }),
   ],
   resultType: coda.ValueType.String,
   isAction: true,
-  execute: async ([projectId, title, description, dueDate, labels], context) => {
+  execute: async ([projectId, title, description, dueDate, labels, returnField], context) => {
     const payload = {
       title,
       description,
@@ -89,6 +96,6 @@ pack.addFormula({
       },
       body: JSON.stringify(payload),
     })
-    return response.body.id
+    return response.body[returnField]
   },
 })
