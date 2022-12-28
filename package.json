@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@codahq/packs-sdk": "^1.0.2"
+    "@codahq/packs-sdk": "^1.2.3"
   },
   "devDependencies": {
     "@types/chai": "^4.3.0",
