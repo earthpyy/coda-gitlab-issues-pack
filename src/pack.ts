@@ -96,6 +96,6 @@ pack.addFormula({
       },
       body: JSON.stringify(payload),
     })
-    return response.body[returnField]
+    return returnField ? response.body[returnField] : response.body
   },
 })
